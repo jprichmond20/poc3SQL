@@ -69,6 +69,20 @@
                     android:text="Read" />
             </LinearLayout>
 
+            <Button
+                android:id="@+id/deleteBtn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="deleteData"
+                android:text="DELETE" />
+
+            <Button
+                android:id="@+id/updateBtn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="updateData"
+                android:text="UPDATE" />
+
             <ScrollView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">

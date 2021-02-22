@@ -61,6 +61,21 @@ class MainActivity : AppCompatActivity() {
             )
         }
     }
+    fun updateData(v: View) {
+        if (editTextName!!.text.toString().isNotEmpty() && editTextSize!!.text.toString().isNotEmpty()) {
+            val item = Item(editTextName!!.text.toString(), editTextSize!!.text.toString().toInt())
+            db!!.updateData(item)
+            clearField()
+        }
+    }
+    fun deleteData(v: View) {
+        if (editTextName!!.text.toString().isNotEmpty() && editTextSize!!.text.toString().isNotEmpty()) {
+            val item = Item(editTextName!!.text.toString(), editTextSize!!.text.toString().toInt())
+            db!!.deleteData(item)
+            clearField()
+        }
+    }
+
     private fun clearField() {
         editTextName!!.text.clear()
         editTextSize!!.text.clear()

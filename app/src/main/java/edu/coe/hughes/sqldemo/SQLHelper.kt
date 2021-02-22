@@ -5,6 +5,8 @@ import android.content.Context
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
 import android.widget.Toast
+import android.database.sqlite.SQLiteStatement as SQLiteStatement1
+
 val DATABASENAME = "MY DATABASE"
 val TABLENAME = "Items"
 val COL_NAME = "name"
@@ -53,7 +55,18 @@ class SQLHelper(var context: Context) : SQLiteOpenHelper(context, DATABASENAME, 
         }
         return list
     }
-
+    fun updateData(item: Item): Boolean {
+        val db = this.writableDatabase
+        val contentValues = ContentValues()
+        contentValues.put(COL_NAME, item.name)
+        contentValues.put(COL_SIZE, item.size)
+        db.update(TABLENAME, contentValues, "NAME = ?", arrayOf(item.name))
+        return true
+    }
+    fun deleteData(item: Item): Int {
+        val db = this.writableDatabase
+        return db.delete(TABLENAME, "NAME = ?", arrayOf(item.name))
+    }
     fun clearDB(){
         val db = this.readableDatabase
         val dropTable = "DROP TABLE IF EXISTS "+ TABLENAME
